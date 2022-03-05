@@ -1,51 +1,55 @@
-'use strict';  //We will write strict javascript, helps the engine to be faster.
-
-const firstname= document.querySelector("#firstnm");
-const lastname= document.querySelector("#lastnm");
-const phonenumber=document.querySelector("#phonenumber");
-const password=document.querySelector("#passwrd");
-const postalcode = document.querySelector("#postalcode");
-const email = document.querySelector("#email");
-
 
 function checkForm(form) {
 
-    let errors=[];
-
-      if(firstname.value=='') {
-      errors.push("Error: Enter first name \n");
+  let firstName= form.firstName.value;
+  let lastName= form.lastName.value;
+  let email= form.email.value;
+  let phoneNumber= form.phoneNumber.value;
+  let postalCode= form.postalCode.value;
+  let password= form.password.value;
+  if (firstName=="" && lastName=="" &&email=="" &&phoneNumber==""&& postalCode ==""&& password=="")
+  return false; 
+  
+  if(firstName=="") {
+    window.alert("Please insert your firstName.");
+    form.firstName.focus();
+    firstName.preventDefault();
+    return false;
+  } 
+  if(lastName=="") {
+    window.alert("Please insert your lastName.");
+    form.lastName.focus();
+    return false;
   }
 
-      if(lastname.value=='') {
-      errors.push("Error: Enter last name \n");
+  let emailReg = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]{2,4}$/;
+  if(email==""||emailReg.test(email) === false) {
+    window.alert("Please insert your email.");
+    form.email.focus();
+    return false;
   }
 
-    let postalcode_input=/^[0-9]{5}?$/;
-      if (postalcode!=postalcode_input){
-      errors.push("Error: Postcode should be 5 digit numbers \n");
-    }
+  if(phoneNumber=="") {
+    window.alert("Please insert your phone Number.");
+    form.phoneNumber.focus();
+    return false;
+  }
+  if(postalCode !=""){
+  let value1 = /^[0-9]{6}$/;
+  if(value1.test(postalCode) === false) {
+    window.alert("Please insert your Postal Code.");
+    form.postalCode.focus();
+    return false;
+  }
+}
+let passwordReg = /^[0-9]{6,}$/;
+  if(password==""||passwordReg.test(password) === false) {
+    window.alert("Please insert your password.");
+    form.password.focus();
+    return false;
+  }
+  //alert ("ВСЕ ОТПРАВЛЕНО НЕ БЕЗОПАСНЫМ GET ");
 
-    let email_input=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/;
-      if (email!=email_input){
-      errors.push("Error: Email should have '@' sign \n");
-    }
+return true;
 
-    let tel_input=/^\+(?:[0-9] ?){6,14}[0-9]$/;
-    if (phonenumber!=tel_input){
-      errors.push("Error: Phone number should contain country code eg.+358 1234556 \n");
-    }
-
-    if(password.value=='') {
-      errors.push("Error: Enter password \n");
-   }
-
-    if(errors.length>0){
-      let msg="ERRORS:\n";
-      for(let i=0; i<errors.length; i++){
-        msg+=errors[i];
-      }
-      alert(msg);
-    }
-
-  return true;
 }

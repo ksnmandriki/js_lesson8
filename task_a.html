@@ -1,48 +1,44 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Task A</title>
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/normalize.min.css">
-    <link rel="stylesheet" href="css/main.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="js/jquery.maskedinput.min.js"></script>
+  <script src="js/maskphone.js"></script>
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/normalize.min.css">
+  <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body>
-<main>
-    <h1 id="test">ВЕБ-ФОРМА</h1>
-    <form action="form-submit.php" method="get">
-        <!-- your input elements here -->
-
-        <label>Имя:</label>
-        <input type="text" name="first name" autofocus required id="firstnm"/>
-        <br>
-        <label>Фамилия:</label>
-        <input type="text" name="last name" required id="lastnm"/>
-        <br>
-        <label>E-mail:</label>
-        <input type="email" name="email" required id="email"/>
-        <br>
-        <label>Номер телефона:</label>
-        <input type="tel" name="phone number" id="phonenumber" placeholder="формат: +375 29 0123456"/>
-        <br>
-        <label>Адрес:</label>
-        <input type="text" name="address" id="address"/>
-        <br>
-        <label>Почтовый код:</label>
-        <input type="text" name="postal code"  pattern="[0-9]{6}" id="postalcode"/>
-        <br>
-        <label>Пароль:</label>
-        <input type="password" name="password" required id="password"/>
-        <br>
-        <label>Отправить:</label>
-         <input type="submit" value="ОК" id="submitbutton"/>
+  <main>
+    <form class="decor" action="form-submit.php" method="get">
+      <div class="form-left-decoration"></div>
+      <div class="form-right-decoration"></div>
+      <div class="circle"></div>
+      <div class="form-inner">
+        <h1 id="test">ВЕБ-ФОРМА</h1>
+        <input type="text" placeholder="Имя" name="first name" autofocus required id="firstnm"
+          pattern="[A-Za-z]{,20}" />
+        <input type="text" placeholder="Фамилия" name="last name" autofocus required id="lastnm"
+          pattern="[A-Za-z]{,20}" />
+        <input type="email" placeholder="E-mail : you@your.com" name="email" autofocus required id="email"
+          pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]{2,4}$">
+        <input type="tel" name="phone number" class="phon" autofocus required id="phon"
+          pattern="^+[0-9]{3}+[0-9]{6,14}$" placeholder="Телефон +375 (XX) XXX-XX-XX" />
+        <input type="text" placeholder="Адрес" name="address" id="address" />
+        <input type="text" placeholder="Почтовый код: 123456" name="postal-code" pattern="^[0-9]{6}$" id="postalcode" />
+        <input type="password" placeholder="Пароль больше 6 цифр" name="password" autofocus required id="password"
+          pattern="^[0-9]{6,}$" />
+        <input type="submit" value="Отправить" id="submitbutton" />
+      </div>
     </form>
-
-</main>
-
+  </main>
 </body>
 
 </html>
